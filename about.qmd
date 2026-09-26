@@ -1,0 +1,85 @@
+---
+title: "About the Team"
+---
+
+## Overview
+
+<!-- EDIT: your team's real overview -->
+Science Olympiad is a national STEM competition where teams of up to
+15 students compete in ~23 events spanning biology, chemistry, physics,
+earth science, and engineering. Central York fields a team each year
+that competes at the regional level, with the goal of advancing to
+states.
+
+## Coaches
+
+<!-- EDIT: swap in real photos (images/coach-1.jpg etc.), names, roles,
+     and emails. Add or remove .g-col-* blocks for more/fewer people. -->
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4 .team-card}
+![](images/coach-1.jpg){.team-photo}
+
+<div class="team-name">Coach Name</div>
+<div class="team-role">Head Coach</div>
+
+[coach1@email.org](mailto:coach1@email.org)
+:::
+
+::: {.g-col-12 .g-col-md-4 .team-card}
+![](images/coach-2.jpg){.team-photo}
+
+<div class="team-name">Coach Name</div>
+<div class="team-role">Assistant Coach</div>
+
+[coach2@email.org](mailto:coach2@email.org)
+:::
+
+:::
+
+## Officers
+
+<!-- EDIT: real names -->
+| Role | Student |
+|---|---|
+| Captain | TBA |
+| Co-Captain | TBA |
+| Event Coordinator | TBA |
+
+## Divisions
+
+Central York competes in **Division C** (grades 9–12).
+
+## Events We Compete In
+
+<!-- EDIT: trim/expand to your team's actual event list -->
+::: {.grid}
+::: {.g-col-6}
+**Life, Personal & Social Science**
+
+- Anatomy & Physiology
+- Disease Detectives
+- Ecology
+:::
+::: {.g-col-6}
+**Physical Science & Chemistry**
+
+- Chemistry Lab
+- Forensics
+- Materials Science
+:::
+::: {.g-col-6}
+**Earth & Space Science**
+
+- Astronomy
+- Dynamic Planet
+- Meteorology
+:::
+::: {.g-col-6}
+**Technology & Engineering**
+
+- Engineering CAD
+- Robot Tour
+- Towers
+:::
+:::

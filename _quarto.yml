@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+
+execute:
+  freeze: auto
+
+website:
+  title: "Central York Science Olympiad"
+  description: "Central York High School Science Olympiad"
+  site-url: "https://cyhsscioly.github.io" #Change later
+  favicon: images/favicon.png # Maybe favicon?
+  page-navigation: true
+
+  navbar:
+    background: dark
+    logo: images/logo.png #put logo here                    
+    title: "CYHS Science Olympiad"
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: schedule.qmd
+        text: Schedule
+      - href: contact.qmd
+        text: Join Us
+    right:
+      - icon: instagram
+        href: https://www.instagram.com/cyhsscioly/
+        aria-label: Instagram
+
+  page-footer:
+    left: "© 2026 Central York Science Olympiad"
+    center: "Central York High School · York, PA"
+    right: "Built with [Quarto](https://quarto.org)"
+    background: dark
+
+format:
+  html:
+    theme: [flatly, styles.scss]
+    toc: false
+    link-external-newwindow: true
