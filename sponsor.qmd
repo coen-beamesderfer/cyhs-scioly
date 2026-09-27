@@ -1,5 +1,5 @@
 ---
-title: "Sponsor Us"
+title: "Support Us"
 page-layout: full
 ---
 
@@ -36,8 +36,6 @@ Whether you are a local business, organization, family, or individual, your supp
 
 ## Sponsorship Opportunities
 
-We offer several sponsorship levels with increasing recognition throughout our competition season.
-
 ::: {.sponsor-tier}
 ### 🐾 Panther Sponsor
 
@@ -47,7 +45,6 @@ We offer several sponsorship levels with increasing recognition throughout our c
 
 - Your name listed on our **Our Sponsors** webpage
 - Shoutout on our team social media
-
 :::
 
 ::: {.sponsor-tier}
@@ -59,7 +56,6 @@ We offer several sponsorship levels with increasing recognition throughout our c
 
 - Your organization's logo on our team competition banner
 - Banner displayed at competitions throughout the season
-
 :::
 
 ::: {.sponsor-tier}
@@ -71,7 +67,6 @@ We offer several sponsorship levels with increasing recognition throughout our c
 
 - Your organization's logo on team T-shirts
 - Shirts worn by team members at competitions throughout the season
-
 :::
 
 ::: {.sponsor-tier}
@@ -84,7 +79,6 @@ We offer several sponsorship levels with increasing recognition throughout our c
 - Large logo placement on team shirts
 - Prominent logo placement on our competition banner
 - Logo placement on selected team competition builds and displays
-
 :::
 
 ## Custom Sponsorships
@@ -93,7 +87,10 @@ Looking for another way to support our team?
 
 We are happy to discuss **custom sponsorship packages** for businesses and organizations interested in supporting a specific project, event, competition, or area of the team.
 
-<a href="mailto:Scioly@cypanthers.org?subject=Custom%20Sponsorship%20Package%20Inquiry&body=Hello%20Central%20York%20Science%20Olympiad%20Team%2C%0A%0AI%20am%20interested%20in%20discussing%20a%20custom%20sponsorship%20package%20for%20Central%20York%20Science%20Olympiad.%0A%0AOrganization%3A%20%0AContact%20Name%3A%20%0APhone%3A%20%0A%0APlease%20let%20me%20know%20what%20options%20are%20available.%0A%0AThank%20you%21" class="btn btn-outline-primary">
+<a
+  href="mailto:Scioly@cypanthers.org?subject=Custom%20Sponsorship%20Package%20Inquiry&body=Hello%20Central%20York%20Science%20Olympiad%20Team%2C%0A%0AI%20am%20interested%20in%20discussing%20a%20custom%20sponsorship%20package%20for%20Central%20York%20Science%20Olympiad.%0A%0AOrganization%3A%0AContact%20Name%3A%0APhone%3A%0A%0APlease%20let%20me%20know%20what%20options%20are%20available.%0A%0AThank%20you%21"
+  class="btn btn-outline-primary"
+>
 Discuss a Custom Package
 </a>
 
@@ -123,7 +120,5 @@ Your sponsorship helps Central York students pursue hands-on science, engineerin
 ## Our Sponsors
 
 *Our sponsors will be recognized here throughout the competition season.*
-
----
 
 [← Back to Home](index.qmd){.btn .btn-secondary}
