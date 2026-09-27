@@ -24,22 +24,11 @@ events <- if (file.exists(events_path)) read.csv(events_path) else data.frame()
 ```
 
 ::: {.callout-note}
-**About this data.** These numbers come from [Duosmium](https://github.com/Duosmium/duosmium), a community-maintained, open-source archive of Science Olympiad results — not an official database. Two things follow from that:
+**About this data.** These numbers come from [Duosmium](https://github.com/Duosmium/duosmium), a community-maintained, open-source archive of Science Olympiad results — not an official database. From this:
 
 - **Coverage is incomplete.** It only includes tournaments someone
   chose to upload, so a season or an invitational can be missing
-  entirely (see `R/update_duosmium_stats.R` for which ones we
-  currently pull from).
-- **Individual results can be wrong.** Uploads occasionally have
-  transcription errors that never got corrected. If a number here
-  doesn't match what you remember from awards ceremony, trust your
-  own memory — and feel free to flag it so we can note the
-  discrepancy or exclude that file.
-
-Best-invitational placement isn't shown as a headline stat, since
-invitational field sizes and formats vary too much to compare fairly
-across tournaments — invitational results still count toward the
-event medal total below.
+  entirely.
 :::
 
 ```{r}
@@ -106,38 +95,48 @@ cat("<div class='stat-number'>", n_tournaments, "</div>")
 if (nrow(events) == 0) {
   cat("Run the update script to populate this chart.")
 } else {
+  best_state_by_event <- events |>
+    filter(level == "States") |>
+    group_by(event) |>
+    summarise(best_state = min(place, na.rm = TRUE), .groups = "drop")
+
   event_summary <- events |>
     group_by(event) |>
     summarise(
-      medals      = sum(medal, na.rm = TRUE),
-      best_place  = min(place, na.rm = TRUE),
-      avg_place   = round(mean(place, na.rm = TRUE), 1),
-      times       = n(),
+      medals = sum(medal, na.rm = TRUE),
+      times  = n(),
       .groups = "drop"
     ) |>
-    arrange(desc(medals), best_place) |>
-    slice_head(n = 15)
+    left_join(best_state_by_event, by = "event") |>
+    mutate(
+      best_state_label = vapply(best_state, function(n) if (is.na(n)) "never at States" else ordinal(n), character(1)),
+      hover_text = paste0(
+        "<b>", event, "</b><br>",
+        "Medals: ", medals, "<br>",
+        "Best State finish: ", best_state_label, "<br>",
+        "Competed: ", times, "x"
+      )
+    ) |>
+    arrange(medals) |>
+    slice_tail(n = 15)
 
   plot_ly(
     event_summary,
-    x = ~reorder(event, medals),
-    y = ~medals,
+    x = ~medals,
+    y = ~factor(event, levels = event),
     type = "bar",
-    orientation = "v",
+    orientation = "h",
     marker = list(color = "#E8720C"),
-    text = ~paste0(
-      event, "<br>Medals: ", medals,
-      "<br>Best finish: ", best_place,
-      "<br>Avg finish: ", avg_place,
-      "<br>Competed: ", times, "x"
-    ),
-    hoverinfo = "text"
+    text = ~hover_text,
+    hoverinfo = "text",
+    textposition = "none"
   ) |>
     layout(
-      xaxis = list(title = "", tickangle = -45),
-      yaxis = list(title = "Career medals", tick0 = 0, dtick = 1),
-      margin = list(b = 140)
-    )
+      xaxis = list(title = "Career medals", tick0 = 0, dtick = 1, rangemode = "tozero"),
+      yaxis = list(title = ""),
+      margin = list(l = 180)
+    ) |>
+    config(displayModeBar = FALSE)
 }
 ```
 

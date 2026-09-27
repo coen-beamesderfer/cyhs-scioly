@@ -52,11 +52,13 @@ invitational_patterns <- c(
   "georgia_scrimmage",
   "berks_county_invitational",
   "umbc_neighbors_division_invitational",
-  "umd_invitational",
-  "bavf"
+  "umd_invitational"
 )
 
-extra_files <- index[str_detect(index, paste0("(", paste(invitational_patterns, collapse = "|"), ").*_c\\.yaml$"))]
+extra_files <- index[str_detect(
+  index,
+  paste0("(", paste(invitational_patterns, collapse = "|"), ").*_c\\.yaml$")
+)]
 
 candidate_files <- unique(c(pa_files, extra_files))
 message("Checking ", length(candidate_files), " tournament files...")
@@ -77,14 +79,32 @@ get_team_result <- function(fname) {
   events         <- extract_events(yml$Events)
   trial_events   <- events$name[events$trial]
   scored_events  <- setdiff(events$name, trial_events)
+  if (length(scored_events) == 0) return(NULL)
 
-  placings <- extract_placings(yml$Placings) |>
+  placings_raw <- extract_placings(yml$Placings) |>
     filter(event %in% scored_events)
-  if (nrow(placings) == 0) return(NULL)  
+  if (nrow(placings_raw) == 0) return(NULL)
 
-  totals <- placings |>
+  grid <- expand.grid(
+    team  = teams$number,
+    event = scored_events,
+    stringsAsFactors = FALSE
+  ) |> as_tibble()
+
+  scored <- grid |>
+    left_join(placings_raw, by = c("team", "event")) |>
+    left_join(
+      placings_raw |> filter(!is.na(place)) |> count(event, name = "n_scored"),
+      by = "event"
+    ) |>
+    mutate(
+      n_scored     = coalesce(n_scored, 0L),
+      scored_place = ifelse(is.na(place), n_scored + 1, place)
+    )
+
+  totals <- scored |>
     group_by(team) |>
-    summarise(points = sum(place, na.rm = TRUE), .groups = "drop") |>
+    summarise(points = sum(scored_place), .groups = "drop") |>
     arrange(points) |>
     mutate(rank = row_number())
 
@@ -96,7 +116,7 @@ get_team_result <- function(fname) {
   level <- yml$Tournament$level
   year  <- yml$Tournament$year
 
-  our_placings <- placings |> filter(team == team_num)
+  our_placings <- placings_raw |> filter(team == team_num, !is.na(place))
 
   summary_row <- tibble(
     file         = fname,
@@ -106,6 +126,7 @@ get_team_result <- function(fname) {
     division     = yml$Tournament$division,
     rank         = our_rank,
     n_teams      = nrow(totals),
+    trophy_cut   = trophy_cut,
     trophy       = !is.na(our_rank) && our_rank <= trophy_cut,
     event_medals = sum(our_placings$place >= 1 & our_placings$place <= medal_cut,
                         na.rm = TRUE)
@@ -128,6 +149,23 @@ raw_results <- map(candidate_files, get_team_result) |> compact()
 
 results <- map(raw_results, "summary") |> bind_rows() |> arrange(year)
 event_results <- map(raw_results, "events") |> bind_rows() |> arrange(year)
+
+corrections_path <- "data/manual-corrections.csv"
+if (file.exists(corrections_path)) {
+  corrections <- read.csv(corrections_path, stringsAsFactors = FALSE) |>
+    rename(corrected_rank = rank)
+  results <- results |>
+    left_join(corrections, by = "file") |>
+    mutate(
+      corrected = !is.na(corrected_rank),
+      rank      = ifelse(corrected, corrected_rank, rank),
+      trophy    = ifelse(corrected, rank <= trophy_cut, trophy)
+    )
+  message(sum(results$corrected), " tournament(s) manually corrected")
+} else {
+  results <- results |> mutate(corrected = FALSE, note = NA_character_)
+}
+results <- results |> select(-trophy_cut)
 
 dir.create("data", showWarnings = FALSE)
 write.csv(results, "data/team-stats.csv", row.names = FALSE)
