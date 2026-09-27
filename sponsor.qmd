@@ -119,6 +119,69 @@ Your sponsorship helps Central York students pursue hands-on science, engineerin
 
 ## Our Sponsors
 
-*Our sponsors will be recognized here throughout the competition season.*
+We are proud to recognize the organizations supporting Central York Science Olympiad.
 
-[← Back to Home](index.qmd){.btn .btn-secondary}
+::: {.sponsor-grid}
+
+::: {.sponsor-wrapper}
+<input type="checkbox" id="sponsor-csdavidson" class="sponsor-toggle">
+
+<label for="sponsor-csdavidson" class="sponsor-card">
+
+::: {.sponsor-card-inner}
+
+::: {.sponsor-card-front}
+
+![](images/cs-davidson.png){.sponsor-logo fig-alt="C.S. Davidson, Inc. logo"}
+
+:::
+
+::: {.sponsor-card-back}
+
+### C.S. Davidson, Inc.
+
+<span class="sponsor-card-tier">Bronze Sponsor</span>
+
+<p>
+Thank you to C.S. Davidson, Inc. for supporting Central York
+Science Olympiad and our students.
+</p>
+
+:::
+
+:::
+</label>
+:::
+
+
+::: {.sponsor-wrapper}
+<input type="checkbox" id="sponsor-janestreet" class="sponsor-toggle">
+
+<label for="sponsor-janestreet" class="sponsor-card">
+
+::: {.sponsor-card-inner}
+
+::: {.sponsor-card-front}
+
+![](images/jane-street.png){.sponsor-logo fig-alt="Jane Street logo"}
+
+:::
+
+::: {.sponsor-card-back}
+
+### Jane Street
+
+<span class="sponsor-card-tier">Bronze Sponsor</span>
+
+<p>
+Thank you to Jane Street for supporting Central York
+Science Olympiad and our students.
+</p>
+
+:::
+
+:::
+</label>
+:::
+
+:::
