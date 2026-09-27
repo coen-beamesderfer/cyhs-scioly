@@ -142,17 +142,13 @@ We are proud to recognize the organizations supporting Central York Science Olym
 
 <span class="sponsor-card-tier">Bronze Sponsor</span>
 
-<p>
-Thank you to C.S. Davidson, Inc. for supporting Central York
-Science Olympiad and our students.
-</p>
+Thank you to C.S. Davidson, Inc. for supporting Central York Science Olympiad and our students.
 
 :::
 
 :::
 </label>
 :::
-
 
 ::: {.sponsor-wrapper}
 <input type="checkbox" id="sponsor-janestreet" class="sponsor-toggle">
@@ -173,10 +169,7 @@ Science Olympiad and our students.
 
 <span class="sponsor-card-tier">Bronze Sponsor</span>
 
-<p>
-Thank you to Jane Street for supporting Central York
-Science Olympiad and our students.
-</p>
+Thank you to Jane Street for supporting Jane Street and our students.
 
 :::
 

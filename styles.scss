@@ -100,8 +100,13 @@ $footer-fg: #ffffff;
 
 .sponsor-toggle {
   position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
   opacity: 0;
-  pointer-events: none;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .sponsor-card {
@@ -116,16 +121,26 @@ $footer-fg: #ffffff;
   position: relative;
   width: 100%;
   height: 100%;
-
   transform-style: preserve-3d;
   transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
 }
 
-
-/* Flip when tapped on touch devices */
-
-.sponsor-toggle:checked + .sponsor-card .sponsor-card-inner {
+.sponsor-wrapper:hover .sponsor-card-inner {
   transform: rotateY(180deg);
+}
+
+.sponsor-wrapper:has(.sponsor-toggle:checked) .sponsor-card-inner {
+  transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .sponsor-wrapper:has(.sponsor-toggle:checked) .sponsor-card-inner {
+    transform: none;
+  }
+
+  .sponsor-toggle {
+    pointer-events: none;
+  }
 }
 
 .sponsor-card-front,
@@ -147,10 +162,8 @@ $footer-fg: #ffffff;
   -webkit-backface-visibility: hidden;
 }
 
-
 .sponsor-card-front {
   background: #ffffff;
-
   border: 3px solid #b8864b;
 
   box-shadow:
@@ -158,11 +171,9 @@ $footer-fg: #ffffff;
     0 4px 8px rgba(184, 134, 75, 0.18);
 }
 
-
 .sponsor-card-back {
   background: #ffffff;
   color: var(--bs-body-color);
-
   text-align: center;
 
   border: 3px solid #b8864b;
@@ -174,12 +185,10 @@ $footer-fg: #ffffff;
   transform: rotateY(180deg);
 }
 
-
 .sponsor-card-back h3 {
   margin: 0 0 1rem;
   font-size: 1.5rem;
 }
-
 
 .sponsor-card-back p {
   max-width: 320px;
@@ -187,19 +196,14 @@ $footer-fg: #ffffff;
   line-height: 1.6;
 }
 
-
 .sponsor-logo {
   display: block;
-
   width: 88%;
   height: 78%;
-
   object-fit: contain;
   object-position: center;
-
   margin: auto;
 }
-
 
 .sponsor-card-tier {
   display: inline-block;
@@ -218,7 +222,7 @@ $footer-fg: #ffffff;
   letter-spacing: 0.08em;
 }
 
-.sponsor-toggle:focus-visible + .sponsor-card {
+.sponsor-toggle:focus-visible {
   outline: 3px solid #b8864b;
   outline-offset: 5px;
 }
