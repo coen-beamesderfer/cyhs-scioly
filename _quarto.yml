@@ -30,6 +30,9 @@ website:
       - href: schedule.qmd
         text: Schedule
 
+      - href: sponsor.qmd
+        text: Support Us
+
       - href: contact.qmd
         text: Join Us
 
