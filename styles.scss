@@ -37,3 +37,50 @@ $footer-fg: #ffffff;
   background-color: $panther-orange;
   border-color: $panther-orange;
 }
+
+.team-card {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+ 
+.team-photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 0.75rem auto;
+  border: 3px solid $panther-orange;
+}
+ 
+.team-card .team-name {
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+ 
+.team-card .team-role {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+ 
+.stat-card {
+  text-align: center;
+  background-color: #f7f7f7;
+  border-radius: 0.5rem;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1.5rem;
+}
+ 
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: $panther-orange;
+  line-height: 1.1;
+}
+ 
+.stat-label {
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}

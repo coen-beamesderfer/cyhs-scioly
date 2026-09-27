@@ -9,12 +9,12 @@ website:
   title: "Central York Science Olympiad"
   description: "Central York High School Science Olympiad"
   site-url: "https://cyhsscioly.github.io" #Change later
-  favicon: images/favicon.png # Maybe favicon?
+  favicon: images/CYHSso.png
   page-navigation: true
 
   navbar:
     background: dark
-    logo: images/logo.png #put logo here                    
+    logo: images/CYHSso.png                
     title: "CYHS Science Olympiad"
     left:
       - href: index.qmd

@@ -1,0 +1,17 @@
+"file","tournament","level","year","division","rank","n_teams","trophy","event_medals"
+"2012-04-27_PA_states_c.yaml","PA States","States",2012,"C",25,36,FALSE,0
+"2013-04-26_PA_states_c.yaml","PA States","States",2013,"C",12,36,FALSE,1
+"2015-04-25_PA_states_c.yaml","PA States","States",2015,"C",23,36,FALSE,2
+"2016-04-23_PA_states_c.yaml","PA States","States",2016,"C",18,36,FALSE,3
+"2017-04-29_PA_states_c.yaml","PA States","States",2017,"C",16,36,FALSE,2
+"2018-04-18_PA_states_c.yaml","PA States","States",2018,"C",22,35,FALSE,1
+"2019-03-02_PA_central_pa_regional_c.yaml","Central PA Regional","Regionals",2019,"C",15,31,FALSE,2
+"2020-02-29_PA_central_pa_regional_c.yaml","Central PA Regional","Regionals",2020,"C",5,33,FALSE,6
+"2022-04-30_PA_states_c.yaml","PA States","States",2022,"C",19,36,FALSE,2
+"2022-03-26_PA_central_north_pa_regional_c.yaml","Central North PA Regional","Regionals",2022,"C",16,24,FALSE,0
+"2023-03-25_PA_central_pa_regional_c.yaml","Central PA Regional","Regionals",2023,"C",7,23,FALSE,0
+"2024-03-23_PA_central_pa_regional_c.yaml","Central PA Regional","Regionals",2024,"C",18,26,FALSE,4
+"2025-04-26_PA_states_c.yaml","PA States","States",2025,"C",22,35,FALSE,3
+"2025-03-22_PA_central_pa_regional_c.yaml","Central PA Regional","Regionals",2025,"C",13,22,FALSE,8
+"2026-04-25_PA_states_c.yaml","PA States","States",2026,"C",16,36,FALSE,5
+"2026-03-28_PA_central_pa_regional_c.yaml","Central PA Regional","Regionals",2026,"C",6,24,FALSE,16
