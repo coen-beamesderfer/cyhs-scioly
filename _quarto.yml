@@ -8,7 +8,7 @@ execute:
 website:
   title: "Central York Science Olympiad"
   description: "Central York High School Science Olympiad"
-  site-url: "https://cyhsscioly.github.io"
+  site-url: "https://coen-beamesderfer.github.io/cyhs-scioly/"
   favicon: images/CYHSso.png
   page-navigation: true
 
@@ -43,7 +43,17 @@ website:
 
   page-footer:
     left: "© 2026 Central York Science Olympiad"
-    center: "Central York High School · York, PA"
+    center:
+     - |
+       <div class="footer-sponsors">
+          <span>Proudly supported by</span>
+          <a href="https://www.csdavidson.com/" aria-label="C.S. Davidson, Inc.">
+            <img src="images/cs-davidson.png" alt="C.S. Davidson, Inc.">
+         </a>
+         <a href="https://www.janestreet.com/" aria-label="Jane Street">
+           <img src="images/jane-street.png" alt="Jane Street">
+         </a>
+       </div>
     right: "Built with [Quarto](https://quarto.org)"
     background: dark
 
