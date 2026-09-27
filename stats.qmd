@@ -1,4 +1,3 @@
-
 ---
 title: "Team Stats"
 ---
@@ -8,6 +7,7 @@ title: "Team Stats"
 #| message: false
 library(dplyr)
 library(knitr)
+library(plotly)
 
 ordinal <- function(n) {
   if (is.na(n)) return("—")
@@ -17,9 +17,30 @@ ordinal <- function(n) {
 }
 
 stats_path <- "data/team-stats.csv"
+events_path <- "data/team-event-results.csv"
 have_data  <- file.exists(stats_path)
-stats <- if (have_data) read.csv(stats_path) else data.frame()
+stats  <- if (have_data) read.csv(stats_path) else data.frame()
+events <- if (file.exists(events_path)) read.csv(events_path) else data.frame()
 ```
+
+::: {.callout-note}
+**About this data.** These numbers come from [Duosmium](https://github.com/Duosmium/duosmium), a community-maintained, open-source archive of Science Olympiad results — not an official database. Two things follow from that:
+
+- **Coverage is incomplete.** It only includes tournaments someone
+  chose to upload, so a season or an invitational can be missing
+  entirely (see `R/update_duosmium_stats.R` for which ones we
+  currently pull from).
+- **Individual results can be wrong.** Uploads occasionally have
+  transcription errors that never got corrected. If a number here
+  doesn't match what you remember from awards ceremony, trust your
+  own memory — and feel free to flag it so we can note the
+  discrepancy or exclude that file.
+
+Best-invitational placement isn't shown as a headline stat, since
+invitational field sizes and formats vary too much to compare fairly
+across tournaments — invitational results still count toward the
+event medal total below.
+:::
 
 ```{r}
 #| echo: false
@@ -77,6 +98,49 @@ cat("<div class='stat-number'>", n_tournaments, "</div>")
 
 :::
 
+## Our Best Events
+
+```{r}
+#| echo: false
+#| warning: false
+if (nrow(events) == 0) {
+  cat("Run the update script to populate this chart.")
+} else {
+  event_summary <- events |>
+    group_by(event) |>
+    summarise(
+      medals      = sum(medal, na.rm = TRUE),
+      best_place  = min(place, na.rm = TRUE),
+      avg_place   = round(mean(place, na.rm = TRUE), 1),
+      times       = n(),
+      .groups = "drop"
+    ) |>
+    arrange(desc(medals), best_place) |>
+    slice_head(n = 15)
+
+  plot_ly(
+    event_summary,
+    x = ~reorder(event, medals),
+    y = ~medals,
+    type = "bar",
+    orientation = "v",
+    marker = list(color = "#E8720C"),
+    text = ~paste0(
+      event, "<br>Medals: ", medals,
+      "<br>Best finish: ", best_place,
+      "<br>Avg finish: ", avg_place,
+      "<br>Competed: ", times, "x"
+    ),
+    hoverinfo = "text"
+  ) |>
+    layout(
+      xaxis = list(title = "", tickangle = -45),
+      yaxis = list(title = "Career medals", tick0 = 0, dtick = 1),
+      margin = list(b = 140)
+    )
+}
+```
+
 ## Tournament History
 
 ```{r}
@@ -98,4 +162,3 @@ if (have_data && nrow(stats) > 0) {
   cat("Run the update script to populate this table.")
 }
 ```
-

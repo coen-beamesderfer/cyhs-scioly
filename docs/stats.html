@@ -74,6 +74,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
 
 
 </head>
@@ -160,6 +169,24 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>About this data.</strong> These numbers come from <a href="https://github.com/Duosmium/duosmium">Duosmium</a>, a community-maintained, open-source archive of Science Olympiad results — not an official database. Two things follow from that:</p>
+<ul>
+<li><strong>Coverage is incomplete.</strong> It only includes tournaments someone chose to upload, so a season or an invitational can be missing entirely (see <code>R/update_duosmium_stats.R</code> for which ones we currently pull from).</li>
+<li><strong>Individual results can be wrong.</strong> Uploads occasionally have transcription errors that never got corrected. If a number here doesn’t match what you remember from awards ceremony, trust your own memory — and feel free to flag it so we can note the discrepancy or exclude that file.</li>
+</ul>
+<p>Best-invitational placement isn’t shown as a headline stat, since invitational field sizes and formats vary too much to compare fairly across tournaments — invitational results still count toward the event medal total below.</p>
+</div>
+</div>
 <div class="grid">
 <div class="g-col-6 g-col-md-3 stat-card">
 <div class="stat-number">
@@ -194,6 +221,15 @@ Tournaments on Record
 </div>
 </div>
 </div>
+<section id="our-best-events" class="level2">
+<h2 class="anchored" data-anchor-id="our-best-events">Our Best Events</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-2f524ef7a15817db6806" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-2f524ef7a15817db6806">{"x":{"visdat":{"1735d3a7fee73":["function () ","plotlyVisDat"]},"cur_data":"1735d3a7fee73","attrs":{"1735d3a7fee73":{"x":{},"y":{},"orientation":"v","marker":{"color":"#E8720C"},"text":{},"hoverinfo":"text","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":140,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"","tickangle":-45,"type":"category","categoryorder":"array","categoryarray":["Wright Stuff","Bungee Drop","Helicopter","Robot Arm","Rocks and Minerals","Entomology","Anatomy and Physiology","Disease Detectives","Dynamic Planet","Experimental Design","Materials Science","Water Quality","Forensics","Write It Do It","Chemistry Lab"]},"yaxis":{"domain":[0,1],"automargin":true,"title":"Career medals","tick0":0,"dtick":1},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":["Chemistry Lab","Write It Do It","Forensics","Disease Detectives","Experimental Design","Water Quality","Anatomy and Physiology","Dynamic Planet","Materials Science","Entomology","Helicopter","Rocks and Minerals","Bungee Drop","Robot Arm","Wright Stuff"],"y":[10,7,6,5,5,5,5,5,5,4,3,3,3,3,2],"orientation":"v","marker":{"color":"#E8720C","line":{"color":"rgba(31,119,180,1)"}},"text":["Chemistry Lab<br>Medals: 10<br>Best finish: 1<br>Avg finish: 24<br>Competed: 52x","Write It Do It<br>Medals: 7<br>Best finish: 3<br>Avg finish: 23.5<br>Competed: 43x","Forensics<br>Medals: 6<br>Best finish: 1<br>Avg finish: 26.3<br>Competed: 52x","Disease Detectives<br>Medals: 5<br>Best finish: 1<br>Avg finish: 25.2<br>Competed: 52x","Experimental Design<br>Medals: 5<br>Best finish: 1<br>Avg finish: 25.2<br>Competed: 51x","Water Quality<br>Medals: 5<br>Best finish: 1<br>Avg finish: 29.7<br>Competed: 22x","Anatomy and Physiology<br>Medals: 5<br>Best finish: 2<br>Avg finish: 28.5<br>Competed: 52x","Dynamic Planet<br>Medals: 5<br>Best finish: 2<br>Avg finish: 26.9<br>Competed: 52x","Materials Science<br>Medals: 5<br>Best finish: 2<br>Avg finish: 19.1<br>Competed: 23x","Entomology<br>Medals: 4<br>Best finish: 1<br>Avg finish: 28.3<br>Competed: 18x","Helicopter<br>Medals: 3<br>Best finish: 1<br>Avg finish: 13.6<br>Competed: 12x","Rocks and Minerals<br>Medals: 3<br>Best finish: 2<br>Avg finish: 22.4<br>Competed: 29x","Bungee Drop<br>Medals: 3<br>Best finish: 3<br>Avg finish: 13.8<br>Competed: 17x","Robot Arm<br>Medals: 3<br>Best finish: 4<br>Avg finish: 12.2<br>Competed: 10x","Wright Stuff<br>Medals: 2<br>Best finish: 1<br>Avg finish: 13.4<br>Competed: 14x"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
 <section id="tournament-history" class="level2">
 <h2 class="anchored" data-anchor-id="tournament-history">Tournament History</h2>
 <div class="cell">
@@ -243,7 +279,7 @@ Tournaments on Record
 <td style="text-align: left;">UMD Invitational</td>
 <td style="text-align: left;">Invitational</td>
 <td style="text-align: left;">C</td>
-<td style="text-align: left;">14 / 40</td>
+<td style="text-align: left;">11 / 40</td>
 <td style="text-align: left;"></td>
 <td style="text-align: right;">1</td>
 </tr>

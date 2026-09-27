@@ -1,282 +1,137 @@
-library(tidyverse)
 library(yaml)
+library(dplyr)
+library(purrr)
+library(stringr)
+library(tibble)
 
-base_raw <- "https://raw.githubusercontent.com/Duosmium/duosmium/main/data/"
+SCHOOL_NAME <- "Central York High School"
+BASE_RAW    <- "https://raw.githubusercontent.com/Duosmium/duosmium/main/data/"
 
-`%||%` <- function(a, b) {
-  if (is.null(a)) b else a
+`%||%` <- function(a, b) if (is.null(a)) b else a
+
+extract_teams <- function(teams_list) {
+  if (is.null(teams_list) || length(teams_list) == 0) {
+    return(tibble(number = integer(), school = character()))
+  }
+  map_dfr(teams_list, function(t) tibble(
+    number = as.integer(t$number),
+    school = as.character(t$school %||% NA_character_)
+  ))
 }
 
+extract_events <- function(events_list) {
+  if (is.null(events_list) || length(events_list) == 0) {
+    return(tibble(name = character(), trial = logical()))
+  }
+  map_dfr(events_list, function(e) tibble(
+    name  = as.character(e$name %||% NA_character_),
+    trial = isTRUE(e$trial)
+  ))
+}
 
-index <- yaml::read_yaml(
-  paste0(base_raw, "recents.yaml")
-) |>
-  unlist()
+extract_placings <- function(placings_list) {
+  if (is.null(placings_list) || length(placings_list) == 0) {
+    return(tibble(team = integer(), event = character(), place = numeric()))
+  }
+  map_dfr(placings_list, function(p) tibble(
+    team  = as.integer(p$team %||% NA_integer_),
+    event = as.character(p$event %||% NA_character_),
+    place = suppressWarnings(as.numeric(p$place %||% NA))
+  ))
+}
 
+index <- yaml::read_yaml(paste0(BASE_RAW, "recents.yaml")) |> unlist()
+pa_files <- index[str_detect(index, "_PA_(states|.*regional)_")]
 
-# Pennsylvania state + regional tournaments
-pa_files <- index[
-  str_detect(index, "_PA_(states|.*regional)_")
-]
-
-
-# Extra invitationals to include
-patterns <- c(
-  "tiger",
-  "barons",
-  "dick_smith",
-  "pitt",
-  "birdso",
-  "georgia",
-  "berks_county",
-  "umbc",
-  "umd",
+invitational_patterns <- c(
+  "tiger_invitational",
+  "barons_invitational",
+  "dick_smith_memorial",
+  "pitt_invitational",
+  "birdso_satellite_invitational",
+  "georgia_scrimmage",
+  "berks_county_invitational",
+  "umbc_neighbors_division_invitational",
+  "umd_invitational",
   "bavf"
 )
 
+extra_files <- index[str_detect(index, paste0("(", paste(invitational_patterns, collapse = "|"), ").*_c\\.yaml$"))]
 
-extra_files <- index[
-  str_detect(
-    index,
-    regex(
-      paste(patterns, collapse = "|"),
-      ignore_case = TRUE
-    )
-  )
-]
+candidate_files <- unique(c(pa_files, extra_files))
+message("Checking ", length(candidate_files), " tournament files...")
 
-
-candidate_files <- unique(
-  c(pa_files, extra_files)
-)
-
-
-message(
-  "Checking ",
-  length(candidate_files),
-  " candidate files"
-)
-
-message(
-  "  PA state/regional: ",
-  length(pa_files)
-)
-
-message(
-  "  Extra invitationals: ",
-  length(extra_files)
-)
-
-normalize_yaml_rows <- function(x) {
-
-  if (is.null(x) || length(x) == 0) {
-    return(tibble())
-  }
-
-  x |>
-    map(~ {
-      if ("suffix" %in% names(.x)) {
-        .x$suffix <- as.character(.x$suffix)
-      }
-
-      .x
-    }) |>
-    bind_rows()
-}
-
-
-get_team_results <- function(fname) {
-
-  url <- paste0(
-    base_raw,
-    "results/",
-    fname
-  )
-
+get_team_result <- function(fname) {
   yml <- tryCatch(
+    yaml::read_yaml(paste0(BASE_RAW, "results/", fname)),
+    error = function(e) NULL
+  )
+  if (is.null(yml) || is.null(yml$Teams)) return(NULL)
 
-  suppressWarnings(
-    yaml::read_yaml(url)
-  ),
+  teams <- extract_teams(yml$Teams)
+  if (nrow(teams) == 0) return(NULL)  
+  our_team <- teams |> filter(school == SCHOOL_NAME)
+  if (nrow(our_team) == 0) return(NULL)  
+  team_num <- our_team$number[1]
 
-  error = function(e) {
+  events         <- extract_events(yml$Events)
+  trial_events   <- events$name[events$trial]
+  scored_events  <- setdiff(events$name, trial_events)
 
-    message(
-      "MISSING/UNREADABLE: ",
-      fname
+  placings <- extract_placings(yml$Placings) |>
+    filter(event %in% scored_events)
+  if (nrow(placings) == 0) return(NULL)  
+
+  totals <- placings |>
+    group_by(team) |>
+    summarise(points = sum(place, na.rm = TRUE), .groups = "drop") |>
+    arrange(points) |>
+    mutate(rank = row_number())
+
+  our_rank    <- totals$rank[totals$team == team_num][1]
+  medal_cut   <- yml$Tournament$medals   %||% 0
+  trophy_cut  <- yml$Tournament$trophies %||% 0
+  tournament  <- yml$Tournament$`short name` %||% yml$Tournament$name %||%
+    paste(yml$Tournament$state, yml$Tournament$level)
+  level <- yml$Tournament$level
+  year  <- yml$Tournament$year
+
+  our_placings <- placings |> filter(team == team_num)
+
+  summary_row <- tibble(
+    file         = fname,
+    tournament   = tournament,
+    level        = level,
+    year         = year,
+    division     = yml$Tournament$division,
+    rank         = our_rank,
+    n_teams      = nrow(totals),
+    trophy       = !is.na(our_rank) && our_rank <= trophy_cut,
+    event_medals = sum(our_placings$place >= 1 & our_placings$place <= medal_cut,
+                        na.rm = TRUE)
+  )
+
+  event_rows <- our_placings |>
+    transmute(
+      tournament = tournament,
+      level      = level,
+      year       = year,
+      event      = event,
+      place      = place,
+      medal      = !is.na(place) & place >= 1 & place <= medal_cut
     )
 
-    NULL
-  }
-)
-
-
-  if (is.null(yml)) {
-    return(NULL)
-  }
-
-
-  if (is.null(yml$Teams)) {
-
-    message(
-      "NO TEAMS DATA: ",
-      fname
-    )
-
-    return(NULL)
-  }
-
-  tryCatch({
-
-    # Teams
-    teams <- normalize_yaml_rows(
-      yml$Teams
-    )
-
-
-    our_team <- teams |>
-      filter(
-        school == "Central York High School"
-      )
-
-    if (nrow(our_team) == 0) {
-      return(NULL)
-    }
-
-
-    team_num <- our_team$number[1]
-
-    events <- normalize_yaml_rows(
-      yml$Events
-    )
-
-    trial_events <- events$name[
-      !is.na(events$trial) &
-        events$trial
-    ]
-
-
-    scored_events <- setdiff(
-      events$name,
-      trial_events
-    )
-
-    placings <- normalize_yaml_rows(
-      yml$Placings
-    ) |>
-      filter(
-        event %in% scored_events
-      )
-
-    totals <- placings |>
-      group_by(team) |>
-      summarize(
-        points = sum(
-          place,
-          na.rm = TRUE
-        ),
-        .groups = "drop"
-      ) |>
-      arrange(points) |>
-      mutate(
-        rank = row_number()
-      )
-
-
-    our_rank <- totals$rank[
-      totals$team == team_num
-    ][1]
-
-    medal_cut <- yml$Tournament$medals %||% 0
-
-    trophy_cut <- yml$Tournament$trophies %||% 0
-
-
-    our_medals <- placings |>
-      filter(
-        team == team_num,
-        place >= 1,
-        place <= medal_cut
-      ) |>
-      nrow()
-
-    tibble(
-
-      file = fname,
-
-      tournament =
-        yml$Tournament$`short name` %||%
-        yml$Tournament$name %||%
-        paste(
-          yml$Tournament$state,
-          yml$Tournament$level
-        ),
-
-      level =
-        yml$Tournament$level,
-
-      year =
-        yml$Tournament$year,
-
-      division =
-        yml$Tournament$division,
-
-      rank =
-        our_rank,
-
-      n_teams =
-        nrow(totals),
-
-      trophy =
-        !is.na(our_rank) &
-        our_rank <= trophy_cut,
-
-      event_medals =
-        our_medals
-    )
-
-
-  }, error = function(e) {
-
-    message(
-      "ERROR PROCESSING: ",
-      fname,
-      " -> ",
-      conditionMessage(e)
-    )
-
-    NULL
-  })
+  list(summary = summary_row, events = event_rows)
 }
 
+raw_results <- map(candidate_files, get_team_result) |> compact()
 
-results <- map(
-  candidate_files,
-  get_team_results
-) |>
-  compact() |>
-  bind_rows() |>
-  arrange(year)
+results <- map(raw_results, "summary") |> bind_rows() |> arrange(year)
+event_results <- map(raw_results, "events") |> bind_rows() |> arrange(year)
 
+dir.create("data", showWarnings = FALSE)
+write.csv(results, "data/team-stats.csv", row.names = FALSE)
+write.csv(event_results, "data/team-event-results.csv", row.names = FALSE)
 
-dir.create(
-  "data",
-  showWarnings = FALSE
-)
-
-
-write.csv(
-  results,
-  "data/team-stats.csv",
-  row.names = FALSE
-)
-
-message(
-  "\n",
-  nrow(results),
-  " tournament results found for CYHS"
-)
-
-message(
-  "Saved to data/team-stats.csv"
-)
+message(nrow(results), " tournament results found for ", SCHOOL_NAME)
+message(nrow(event_results), " individual event results found")
