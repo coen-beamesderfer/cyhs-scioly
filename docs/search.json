@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Central York Science Olympiad",
-    "section": "",
-    "text": "Join Us"
-  },
-  {
-    "objectID": "index.html#what-we-do",
-    "href": "index.html#what-we-do",
-    "title": "Central York Science Olympiad",
-    "section": "What We Do",
-    "text": "What We Do\nDescription"
-  },
-  {
-    "objectID": "index.html#recent-highlights",
-    "href": "index.html#recent-highlights",
-    "title": "Central York Science Olympiad",
-    "section": "Recent Highlights",
-    "text": "Recent Highlights\nPalcements here with cool event logos\nSee the Schedule page for practice times and upcoming meets, or visit Join Us to get involved."
-  },
-  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Schedule",
@@ -75,6 +54,27 @@
     "title": "About Us",
     "section": "Events We Compete In",
     "text": "Events We Compete In\n\n\n\nLife, Personal & Social Science\n\nAnatomy & Physiology\nDisease Detectives\nEcology\n\n\n\nPhysical Science & Chemistry\n\nChemistry Lab\nForensics\nMaterials Science\n\n\n\nEarth & Space Science\n\nAstronomy\nDynamic Planet\nMeteorology\n\n\n\nTechnology & Engineering\n\nEngineering CAD\nRobot Tour\nTowers"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Central York Science Olympiad",
+    "section": "",
+    "text": "Join Us"
+  },
+  {
+    "objectID": "index.html#what-we-do",
+    "href": "index.html#what-we-do",
+    "title": "Central York Science Olympiad",
+    "section": "What We Do",
+    "text": "What We Do\nDescription"
+  },
+  {
+    "objectID": "index.html#recent-highlights",
+    "href": "index.html#recent-highlights",
+    "title": "Central York Science Olympiad",
+    "section": "Recent Highlights",
+    "text": "Recent Highlights\nPalcements here with cool event logos\nSee the Schedule page for practice times and upcoming meets, or visit Join Us to get involved."
   },
   {
     "objectID": "stats.html",

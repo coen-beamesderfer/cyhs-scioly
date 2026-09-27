@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://cyhsscioly.github.io/index.html</loc>
-    <lastmod>2026-09-27T01:47:26.590Z</lastmod>
-  </url>
-  <url>
     <loc>https://cyhsscioly.github.io/schedule.html</loc>
     <lastmod>2026-09-27T01:47:14.567Z</lastmod>
   </url>
@@ -13,11 +9,15 @@
     <lastmod>2026-09-27T01:42:47.994Z</lastmod>
   </url>
   <url>
-    <loc>https://cyhsscioly.github.io/stats.html</loc>
-    <lastmod>2026-09-27T01:46:59.949Z</lastmod>
-  </url>
-  <url>
     <loc>https://cyhsscioly.github.io/contact.html</loc>
     <lastmod>2026-09-27T01:47:22.954Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cyhsscioly.github.io/index.html</loc>
+    <lastmod>2026-09-27T01:52:02.963Z</lastmod>
+  </url>
+  <url>
+    <loc>https://cyhsscioly.github.io/stats.html</loc>
+    <lastmod>2026-09-27T01:46:59.949Z</lastmod>
   </url>
 </urlset>
