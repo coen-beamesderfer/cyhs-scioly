@@ -52,7 +52,8 @@ invitational_patterns <- c(
   "georgia_scrimmage",
   "berks_county_invitational",
   "umbc_neighbors_division_invitational",
-  "umd_invitational"
+  "umd_invitational",
+  "bavf_invitational"
 )
 
 extra_files <- index[str_detect(
