@@ -12,34 +12,40 @@ website:
   favicon: images/CYHSso.png
   page-navigation: true
 
-  navbar:
-    background: dark
+  sidebar:
+    background: "#1A1A1A"
     logo: images/CYHSso.png
-    title: "CYHS Science Olympiad"
-
-    left:
-      - href: index.qmd
-        text: Home
-
-      - href: about.qmd
-        text: About
-
-      - href: stats.qmd
-        text: Statistics
-
-      - href: schedule.qmd
-        text: Schedule
-
-      - href: sponsor.qmd
-        text: Support Us
-
-      - href: contact.qmd
-        text: Join Us
-
-    right:
+    logo-alt: "Central York Science Olympiad logo"
+    pinned: true
+    align: center
+    tools:
       - icon: instagram
         href: https://www.instagram.com/cyhsscioly/
-        aria-label: Instagram
+      - icon: envelope-fill
+        href: mailto:scioly@cypanthers.org
+        text: "Email"
+    style: docked
+    search: true
+    collapse-level: 1
+    contents:
+      - section: "Team"
+        contents:
+          - href: index.qmd
+            text: Home
+          - href: about.qmd
+            text: About Us
+      - section: "Results"
+        contents:
+          - href: schedule.qmd
+            text: Schedule
+          - href: stats.qmd
+            text: Statistics
+      - section: "Logistics"
+        contents:
+          - href: contact.qmd
+            text: Contact Us
+          - href: sponsor.qmd
+            text: Support Us
 
   page-footer:
     left: "© 2026 Central York Science Olympiad"
@@ -55,10 +61,10 @@ website:
          </a>
        </div>
     right: "Built with [Quarto](https://quarto.org)"
-    background: dark
+    background: "#1A1A1A"
 
 format:
   html:
     theme: [flatly, styles.scss]
-    toc: false
+    toc: true
     link-external-newwindow: true

@@ -4,7 +4,6 @@ title: "About Us"
 
 ## Overview
 
-<!-- EDIT: your team's real overview -->
 Science Olympiad is a national STEM competition where teams of up to
 15 students compete in ~23 events spanning biology, chemistry, physics,
 earth science, and engineering. Central York fields a team each year
@@ -13,26 +12,24 @@ states.
 
 ## Coaches
 
-<!-- EDIT: swap in real photos (images/coach-1.jpg etc.), names, roles,
-     and emails. Add or remove .g-col-* blocks for more/fewer people. -->
 ::: {.grid}
 
 ::: {.g-col-12 .g-col-md-4 .team-card}
 ![](images/coach-1.jpg){.team-photo}
 
-<div class="team-name">Coach Name</div>
+<div class="team-name">Matthew Hess</div>
 <div class="team-role">Head Coach</div>
 
-[coach1@email.org](mailto:coach1@email.org)
+[mhess@iforget.com](mailto:coach1@email.org)
 :::
 
 ::: {.g-col-12 .g-col-md-4 .team-card}
 ![](images/coach-2.jpg){.team-photo}
 
-<div class="team-name">Coach Name</div>
+<div class="team-name">Eric Musselman</div>
 <div class="team-role">Assistant Coach</div>
 
-[coach2@email.org](mailto:coach2@email.org)
+[emusselman@iforget.com](mailto:emusselman@iforget.com)
 :::
 
 :::
@@ -42,17 +39,16 @@ states.
 <!-- EDIT: real names -->
 | Role | Student |
 |---|---|
-| Captain | TBA |
-| Co-Captain | TBA |
-| Event Coordinator | TBA |
+| Idk | TBA |
+| Idk | TBA |
+| Schedule Coordinator | TBA |
 
 ## Divisions
 
 Central York competes in **Division C** (grades 9–12).
 
-## Events We Compete In
+## Events We Compete In (Update later)
 
-<!-- EDIT: trim/expand to your team's actual event list -->
 ::: {.grid}
 ::: {.g-col-6}
 **Life, Personal & Social Science**

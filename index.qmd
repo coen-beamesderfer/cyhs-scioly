@@ -5,9 +5,9 @@ page-layout: full
 
 ::: {.hero-banner}
 # Central York Science Olympiad
-### Slogan ?
 
-[Join Us](contact.qmd){.btn .btn-primary .btn-lg role="button"}
+[Support Us](sponsor.qmd){.btn .btn-primary .btn-lg role="button"}
+[Contact Us](contact.qmd){.btn .btn-primary .btn-lg role="button"}
 :::
 
 ## What We Do
@@ -18,5 +18,5 @@ Description
 
 Palcements here with cool event logos
 
-See the [Schedule](schedule.qmd) page for practice times and upcoming
-meets, or visit [Join Us](contact.qmd) to get involved.
+See the [Schedule](schedule.qmd) page for and upcoming
+competitions, or visit [Support Us](sponsor.qmd) to support our team.
