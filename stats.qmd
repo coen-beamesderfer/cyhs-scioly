@@ -113,7 +113,7 @@ if (nrow(events) == 0) {
       hover_text = paste0(
         "<b>", event, "</b><br>",
         "Medals: ", medals, "<br>",
-        "Best State finish: ", best_state_label, "<br>",
+        "Best States: ", best_state_label, "<br>",
         "Competed: ", times, "x"
       )
     ) |>
