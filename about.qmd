@@ -1,17 +1,5 @@
 ---
-title: "About Us""
-listing:
-  contents: ta
-  sort: title
-  sort-ui: [title, categories, description, subtitle]
-  filter-ui: [categories, description]
-  type: table
-  fields: [image, title, categories, description, subtitle]
-  field-display-names:
-    title: Name
-    categories: "Role(s)"
-    description: "Section(s)"
-    subtitle: Office hours
+title: "About Us"
 ---
 
 ## Overview

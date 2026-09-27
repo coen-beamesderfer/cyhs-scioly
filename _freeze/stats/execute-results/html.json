@@ -1,0 +1,15 @@
+{
+  "hash": "69d0d83e6517b67300afc132acd0be7d",
+  "result": {
+    "engine": "knitr",
+    "markdown": "\n---\ntitle: \"Team Stats\"\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n\n::: {.grid}\n\n::: {.g-col-6 .g-col-md-3 .stat-card}\n<div class='stat-number'> 5th </div>\n<div class=\"stat-label\">Best Regional Finish</div>\n:::\n\n::: {.g-col-6 .g-col-md-3 .stat-card}\n<div class='stat-number'> 12th </div>\n<div class=\"stat-label\">Best State Finish</div>\n:::\n\n::: {.g-col-6 .g-col-md-3 .stat-card}\n<div class='stat-number'> 55 </div>\n<div class=\"stat-label\">Career Event Medals</div>\n:::\n\n::: {.g-col-6 .g-col-md-3 .stat-card}\n<div class='stat-number'> 16 </div>\n<div class=\"stat-label\">Tournaments on Record</div>\n:::\n\n:::\n\n## Tournament History\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n\n| Year|Tournament                |Level     |Div |Rank    |Trophy | Event Medals|\n|----:|:-------------------------|:---------|:---|:-------|:------|------------:|\n| 2026|PA States                 |States    |C   |16 / 36 |       |            5|\n| 2026|Central PA Regional       |Regionals |C   |6 / 24  |       |           16|\n| 2025|PA States                 |States    |C   |22 / 35 |       |            3|\n| 2025|Central PA Regional       |Regionals |C   |13 / 22 |       |            8|\n| 2024|Central PA Regional       |Regionals |C   |18 / 26 |       |            4|\n| 2023|Central PA Regional       |Regionals |C   |7 / 23  |       |            0|\n| 2022|PA States                 |States    |C   |19 / 36 |       |            2|\n| 2022|Central North PA Regional |Regionals |C   |16 / 24 |       |            0|\n| 2020|Central PA Regional       |Regionals |C   |5 / 33  |       |            6|\n| 2019|Central PA Regional       |Regionals |C   |15 / 31 |       |            2|\n| 2018|PA States                 |States    |C   |22 / 35 |       |            1|\n| 2017|PA States                 |States    |C   |16 / 36 |       |            2|\n| 2016|PA States                 |States    |C   |18 / 36 |       |            3|\n| 2015|PA States                 |States    |C   |23 / 36 |       |            2|\n| 2013|PA States                 |States    |C   |12 / 36 |       |            1|\n| 2012|PA States                 |States    |C   |25 / 36 |       |            0|\n\n\n:::\n:::\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

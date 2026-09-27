@@ -8,23 +8,31 @@ execute:
 website:
   title: "Central York Science Olympiad"
   description: "Central York High School Science Olympiad"
-  site-url: "https://cyhsscioly.github.io" #Change later
+  site-url: "https://cyhsscioly.github.io"
   favicon: images/CYHSso.png
   page-navigation: true
 
   navbar:
     background: dark
-    logo: images/CYHSso.png                
+    logo: images/CYHSso.png
     title: "CYHS Science Olympiad"
+
     left:
       - href: index.qmd
         text: Home
+
       - href: about.qmd
         text: About
+
+      - href: stats.qmd
+        text: Statistics
+
       - href: schedule.qmd
         text: Schedule
+
       - href: contact.qmd
         text: Join Us
+
     right:
       - icon: instagram
         href: https://www.instagram.com/cyhsscioly/
